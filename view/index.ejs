@@ -1,0 +1,100 @@
+<%- include partial/head.ejs %>
+
+
+<div id="btn_afficher">
+<button class="btn"  id="btn_toggle_produits">Afficher/Cacher Produits</button>
+<button class="btn" id="btn_toggle_marques"> Afficher/Cacher Marques</button>
+</div>
+
+<p id="text">Bienvenue sur la gestion de stock de BizOnline après avoir créer,modifier, ou supprimer des marques ou des produits n'oubliez pas de rafraichir la page pour mettre à jour le tableau !</p>
+
+
+<div class="is-hidden" id="toggle_produits">
+  <section id="produits">
+    <h1 class="title">Gérer les produits</h1>
+    <h3 class="title">Vous pouvez créer,éditer,supprimer vos produits</h3>
+
+    <table class="container">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Marques</th>
+          <th>Produits</th>
+          <th>Prix</th>
+          <th>Description</th>
+          <th>Modifier</th>
+          <th>Supprimer</th>
+        </tr>
+      </thead>
+      <tbody><% for(var produit of prod) {
+         %>
+            <tr>
+              <td><%= produit.id %></td>
+              <td><%= produit.id_marque %></td>
+              <td><%= produit.nom %></td>
+              <td><%= produit.prix %></td>
+              <td><%= produit.description %></td>
+              <td><button id="modif_<%= produit.id%>" class="btn_modif_produits"><i class="far fa-edit"></i></button></td>
+              <td><button id="suppr_<%= produit.id%>" class="btn_supp_produits"><i class="fas fa-trash"></i></button></td>
+            </tr>
+      <% } %></tbody>
+    </table>
+
+
+    <div class="form_div"> 
+      <form action="">
+        <label for="" >Nom de la marque :</label>
+        <input type="text"id="input_id_marque">
+
+        <label for="">Nom du produit :</label>
+        <input type="text"  id="input_produit">
+
+        <label for="" >Prix :</label>
+        <input type="text"id="input_prix">
+
+        <label for="">Description :</label>
+        <input type="text" id="input_description">
+
+        <button class="button" id="btn_add_produits">Créer un produit</button>
+      </form>
+    </div>
+  </section>
+</div>
+
+<div class="is-hidden" id="toggle_marques">
+  <section id="Marques">
+     <h2 class="title">Gérer les marques</h2>
+    <h3 class="title">Vous pouvez créer,éditer,supprimer vos marques</h3>
+    <table class="container">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nom de la Marques</th>
+          <th>Modifier</th>
+          <th>Supprimer</th>
+        </tr>
+      </thead>
+      <tbody><% for(var marque of marques) {
+         %>
+            <tr>
+              <td><%= marque.id %></td>
+              <td><%= marque.name %></td>
+              <td><button id="modif_<%= marque.id%>" class="btn_modif_marques"><i class="far fa-edit"></i></button></td>
+              <td><button id="suppr_<%= marque.id%>" class="btn_supp_marques"><i class="fas fa-trash"></i></button></td>
+            </tr>
+      <% } %></tbody>
+    </table>
+
+
+    <div class="form_div_marques"> 
+      <form action="">
+        <label for="" >Nom de la marque :</label>
+        <input type="text"id="input_name_marque">
+        <button class="button" id="btn_add_marques">Créer une marque</button>
+      </form>
+    </div>
+
+  </section>
+</div>
+
+<%- include partial/footer.ejs %>
